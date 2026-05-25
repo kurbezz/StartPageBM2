@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #161b1e;
+  --color-title: #FFFFFF;
+}
+
+@layer base {
+  /* input {
+    @apply border border-gray-300 rounded-md w-25;
+  } */
+  li::before {
+  content: ">";
+  padding-right: 5px;
+}
+}
+
