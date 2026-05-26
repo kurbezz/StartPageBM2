@@ -1,17 +1,39 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #161b1e;
-  --color-title: #FFFFFF;
+  --color-background-old: #161b1e;
+  --color-background: #101416;
+  --color-title: #dddddd;
+  --color-input-bg: #20211e;
+  --color-input-border: #56564c;
+  --color-category: #db92a7;
+  --color-btn-delete: #511e2b;
+  --color-btn-delete-hover: #632641;
+  --color-btn-delete-text: #d84357;
+  --color-btn-add: #1e512a;
+  --color-btn-add-text: #43d857;
+  --color-btn-add-hover: #296d4a;
+  --color-link-hover: #FFFFFF;
+  --font-cascadia: "Cascadia Code"
+
 }
 
 @layer base {
+
   /* input {
     @apply border border-gray-300 rounded-md w-25;
   } */
   li::before {
-  content: ">";
-  padding-right: 5px;
+    content: ">";
+    padding-right: 0px;
+  }
+  .btn-delete{
+    @apply bg-btn-delete hover:bg-btn-delete-hover text-btn-delete-text text-sm p-1.5 ; 
+  }
+  .btn-add{
+    @apply bg-btn-add hover:bg-btn-add-hover text-btn-add-text text-sm p-1.5 ; 
+  }
+  a{
+    @apply text-title text-xl hover:text-link-hover hover:font-bold;
+  }
 }
-}
-

@@ -27,6 +27,10 @@
           name: "ctclink",
           url: "https://csprd.ctclink.us",
         },
+        {
+          name: "wamap",
+          url: "https://www.wamap.org/",
+        },
       ],
     },
     {
@@ -98,7 +102,7 @@
 
   function addCategory() {
     categories.push({
-      name: "Category" + (categories.length + 1),
+      name: "Other" + (categories.length + 1),
       items: [
         {
           name: "link" + linkCount,
@@ -110,45 +114,51 @@
   function deleteCategory(category: Category) {
     categories = categories.filter((item) => item.name !== category.name);
   }
+
+  function exit(event: any) {
+    // console.log('Key released:', event.key);
+    if(event.key === "Escape" || event.key === "Enter"){
+      toggleEditMode()
+    }
+  }
 </script>
 
 <!-- Welcome Message -->
-<div class="p-5 py-15 md:py-25 bg-green-800 flex justify-center text-5xl md:text-6xl lg:text-8xl font-extrabold">
-  {#if isEditMode}
-    <input class="w-80 md:w-100 lg:w-150" bind:value={welcomeMessage} />
-  {:else}
-    <h1>{welcomeMessage}</h1>
-  {/if}
+<div class="h-50 md:h-60 lg:h-70 flex justify-center items-center text-6xl md:text-8xl lg:text-9xl font-extrabold text-title pt-15 mb-10">
+    {#if isEditMode}
+      <input class="w-150 bg-input-bg  rounded-2xl" bind:value={welcomeMessage} onkeyup={exit}/>
+    {:else}
+      <h1>{welcomeMessage}</h1>
+    {/if}
+
 </div>
 
-<div class="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-3 p-10 px-10 md:px-30 lg:px-40">
+<!-- <div class="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 p-10 px-20 md:px-25 lg:px-50"> -->
+<div class="lg:mx-[8%] grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))]">
 
 
   <!-- Categories -->
   {#each categories as category, i}
 
-    <div class="bg-blue-500 min-h-25 min-w-25">
+    <div class="min-h-25 min-w-25 max-w-100 mx-auto">
       
-      <!-- Category Title -->
-      <div class="text-xl font-bold py-2">
+      <div class={isEditMode? "mx-auto w-1/1" : "mx-auto w-1/2"}>
+        <!-- Category Title -->
+      <div class="flex items-center h-15 text-2xl font-bold text-category">
         {#if isEditMode}
-          <input bind:value={category.name} />
-          <button onclick={() => deleteCategory(category)}>X</button>
+          ~/<input class="min-w-0 max-w-2/5 bg-input-bg" bind:value={category.name} onkeyup={exit} />
+          <button class="btn-delete" onclick={() => deleteCategory(category)}>Delete Category</button>
         {:else}
-          <h2>~/{category.name}</h2>
+          <h2 class="text-1.5xl">~/{category.name}</h2>
         {/if}
       </div>
 
       <!-- Links -->
       <ul>
         {#each category.items as link}
-          <li>
+          <li class="flex gap-2 h-7 w-75">
             {#if isEditMode}
-              <input bind:value={link.name} /><input
-                bind:value={link.url}
-              /><button onclick={() => removeLink(category, link)}
-                >X</button
-              >
+              <input class="text-xs w-3/10 bg-input-bg" bind:value={link.name} onkeyup={exit}/><input class="text-xs w-5/10 bg-input-bg" bind:value={link.url} onkeyup={exit} /><button class="btn-delete w-2/10 py-0.5" onclick={() => removeLink(category, link)}>Delete</button>
             {:else}
               <a href={link.url}>{link.name}</a>
             {/if}
@@ -158,55 +168,23 @@
         <!-- Add Link Button -->
         {#if isEditMode}
           <li>
-            <button onclick={() => addLink(category)}>add new link</button>
+            <button class="btn-add py-0.5 ml-2" onclick={() => addLink(category)}>Add Link</button>
           </li>
         {/if}
       </ul>
+      </div>
+      
     </div>
   {/each}
 
-  <!-- Add Category Button -->
-  {#if isEditMode}
-    <button onclick={addCategory}>Add Category</button>
+  
+  
+  
+</div>
+<!-- Add Category Button -->
+{#if isEditMode}
+    <button class="btn-add fixed bottom-4 left-4" onclick={addCategory}>Add Category</button>
   {/if}
 
-
-</div>
-<button onclick={toggleEditMode}>toggle</button>
-
-<!-- {#if isEditMode}
-    {#each categories as category, i}
-      <div class="bg-blue-500 min-h-25">
-        <input bind:value={category.name} />
-        <button onclick={() => deleteCategory(category)}>Delete Category</button
-        >
-        <ul>
-          {#each category.items as link}
-            <li>
-              <input bind:value={link.name} /><input
-                bind:value={link.url}
-              /><button onclick={() => removeLink(category, link)}
-                >delete link</button
-              >
-            </li>
-          {/each}
-          <li>
-            <button onclick={() => addLink(category)}>add new link</button>
-          </li>
-        </ul>
-
-      </div>
-    {/each}
-    <button onclick={addCategory}>Add Category</button>
-  {:else}
-    {#each categories as category, i}
-      <div class="bg-red-500 min-h-25 min-w-25">
-        <h2>{category.name}</h2>
-        <ul>
-          {#each category.items as link}
-            <li><a href={link.url}>{link.name}</a></li>
-          {/each}
-        </ul>
-      </div>
-    {/each}
-  {/if} -->
+<!-- Edit Mode Button -->
+<button class="opacity-0 hover:opacity-100 h-1/10 w-1/10 fixed bottom-4 right-4 {isEditMode? "btn-add opacity-100": "btn-delete opacity-0 hover:opacity-100"}" onclick={toggleEditMode}>Edit Mode: {isEditMode? "ON": "OFF"}</button>
