@@ -10,8 +10,7 @@ Runs 100 % on client side and all data is stored locally.**
 ## Easy Configuration
 Turn on Edit mode by using the hidden button at the lower right corner.
 
-
-[![Demo - Showccase](./public/demo-edit2.jpg)](./public/customization-showcase.mp4)
+![Demo showcase](./public/demo-showcase.gif)
 
 ![Demo - Edit Mode](./public/demo-edit2.jpg)
 

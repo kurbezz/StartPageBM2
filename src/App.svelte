@@ -8,7 +8,7 @@
       items: [
         {
           name: "github",
-          url: "https://github.com/",
+          url: "https://github.com/BMHeades/StartPageBM2",
         },
         {
           name: "boot.dev",
@@ -21,7 +21,7 @@
       items: [
         {
           name: "canvas",
-          url: "https://tacomacc.instructure.com/",
+          url: "https://instructure.com/",
         },
         {
           name: "ctclink",
