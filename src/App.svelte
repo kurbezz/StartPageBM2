@@ -12,7 +12,7 @@
         },
         {
           name: "boot.dev",
-          url: "https://www.boot.dev/dashboard",
+          url: "https://www.boot.dev?bannerlord=bmheades",
         },
       ],
     },

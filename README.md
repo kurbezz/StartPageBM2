@@ -12,7 +12,6 @@ Turn on Edit mode by using the hidden button at the lower right corner.
 
 ![Demo showcase](./public/demo-showcase.gif)
 
-![Demo - Edit Mode](./public/demo-edit2.jpg)
 
 Have fun editing!
 
