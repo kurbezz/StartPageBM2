@@ -1,6 +1,6 @@
 # StartPageBM v2
 
-Replace your ads-filled default Home Page with this clean and minimal Start Page that is easy to customize.\
+Replace your ads-filled default Home Page with this clean and minimal Start Page that is easy to customize.
 
 ![Demo - Minimal Homepage](./public/demo.jpg)
 
@@ -8,7 +8,7 @@ Replace your ads-filled default Home Page with this clean and minimal Start Page
 Runs 100 % on client side and all data is stored locally.**
 
 ## Easy Configuration
-Turn on Edit mode by using the hidden button at the lower right corner.\
+Turn on Edit mode by using the hidden button at the lower right corner.
 
 ![Demo - Edit Mode](./public/demo-edit.jpg)
 
